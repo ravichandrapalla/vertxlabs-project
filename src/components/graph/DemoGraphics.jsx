@@ -8,7 +8,7 @@ const demographics = [
 ];
 const DemoGraphics = () => {
   return (
-    <div className="grid grid-cols-3 gap-6 mt-4">
+    <div className=" mt-4 bg-[#000000]">
       {/* Map Placeholder */}
       <div className="col-span-2 bg-gray-900 p-6 rounded-lg shadow flex items-center justify-center">
         <p className="text-gray-400">[ World Map Placeholder ]</p>

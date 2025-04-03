@@ -24,10 +24,10 @@ const Dashboard = () => {
       </section>
 
       {/* Demographics Section */}
-      <section className="px-6">
+      {/* <section className="px-6">
         <h2 className="text-2xl font-bold">Demographics</h2>
         <DemoGraphics />
-      </section>
+      </section> */}
     </div>
   );
 };
