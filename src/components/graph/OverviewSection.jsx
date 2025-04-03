@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FiChevronDown } from "react-icons/fi";
+import Dropdown from "../ui/Dropdown";
 import {
   LineChart,
   Line,
@@ -33,45 +34,15 @@ const dropdownOptions = {
   addOptions: ["Connections", "Interactions", "Impressions"],
 };
 
-const Dropdown = ({ options, selected, setSelected }) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="relative">
-      <button
-        className="bg-gray-800 px-3 py-1 rounded-md flex items-center space-x-1"
-        onClick={() => setOpen(!open)}
-      >
-        <span>{selected}</span>
-        <FiChevronDown />
-      </button>
-      {open && (
-        <div className="absolute left-0 mt-1 w-40 bg-gray-900 rounded shadow-lg z-10">
-          {options.map((option) => (
-            <div
-              key={option}
-              className="px-3 py-2 hover:bg-gray-700 cursor-pointer"
-              onClick={() => {
-                setSelected(option);
-                setOpen(false);
-              }}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
-const VisitorsGraph = () => {
+const OverviewSection = () => {
   const [selectedVisitor, setSelectedVisitor] = useState("Visitors");
   const [selectedTime, setSelectedTime] = useState("Last 30 days");
   const [selectedAdd, setSelectedAdd] = useState("+ Add");
 
   return (
-    <div className="grid rounded-xl">
-      <div className="col-span-2 p-6 rounded-lg shadow">
+    <div className="grid grid-cols-[2fr_1fr] grid-rows-[auto_auto] gap-6 rounded-xl py-6">
+      {/* Visitors Graph (Top Left, Large) */}
+      <div className="p-6 rounded-lg shadow bg-gray-900">
         <div className="flex justify-between items-center mb-4">
           <div className="flex space-x-2">
             <Dropdown
@@ -110,7 +81,7 @@ const VisitorsGraph = () => {
         </div>
       </div>
 
-      {/* Insights Section */}
+      {/* Insights (Top Right, Small) */}
       <div className="bg-gray-900 p-6 rounded-lg shadow flex flex-col">
         <div className="flex justify-between items-center mb-2">
           <h3 className="text-lg font-semibold">Insights</h3>
@@ -135,8 +106,33 @@ const VisitorsGraph = () => {
           <FaArrowRight />
         </button>
       </div>
+
+      {/* Demographics (Full Width, Bottom Row) */}
+      <div className="col-span-2 bg-gray-900 p-6 rounded-lg shadow">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-semibold">Demographics</h3>
+          <Dropdown
+            options={dropdownOptions.visitors}
+            selected={selectedVisitor}
+            setSelected={setSelectedVisitor}
+          />
+        </div>
+        <div className="mt-4">
+          <img
+            src="/mnt/data/new.png"
+            alt="Demographics Chart"
+            className="w-full"
+          />
+        </div>
+        <div className="mt-6">
+          <button className="text-blue-400 flex items-center space-x-2">
+            <span>View all countries</span>
+            <FaArrowRight />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default VisitorsGraph;
+export default OverviewSection;

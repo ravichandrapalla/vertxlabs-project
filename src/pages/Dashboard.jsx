@@ -1,9 +1,10 @@
 import DemoGraphics from "../components/graph/DemoGraphics";
+import OverviewSection from "../components/graph/OverviewSection";
 import VisitorsGraph from "../components/graph/VisitorsGraph";
 
 const Dashboard = () => {
   return (
-    <div className="space-y-6">
+    <div className="text-white  h-full">
       <section className="bg-[#000000] text-white flex justify-between items-center border-b-1 border-[#1D1D1D] ">
         <div className="flex items-center justify-center ">
           <div className="flex items-center justify-center p-4 border-r-1 border-[#1D1D1D]">
@@ -17,17 +18,18 @@ const Dashboard = () => {
           <p>More</p>
         </div>
       </section>
-      {/* Overview Section */}
-      <section className="px-6">
-        <h2 className="text-2xl font-bold">Overview</h2>
-        <VisitorsGraph />
-      </section>
+      <article className="bg-[#080808] p-4">
+        {/* Overview Section */}
+        <section className="px-6 h-full ">
+          <h2 className="text-2xl font-bold">Overview</h2>
+          <OverviewSection />
+        </section>
 
-      {/* Demographics Section */}
-      {/* <section className="px-6">
-        <h2 className="text-2xl font-bold">Demographics</h2>
-        <DemoGraphics />
-      </section> */}
+        {/* <section className="px-6">
+          <h2 className="text-2xl font-bold">Demographics</h2>
+          <DemoGraphics />
+        </section> */}
+      </article>
     </div>
   );
 };
