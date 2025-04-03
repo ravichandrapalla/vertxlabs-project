@@ -7,7 +7,7 @@ import Sidebar from "./components/ui/Sidebar";
 
 const GlobalLayout = ({ children }) => {
   return (
-    <div className="grid grid-cols-[250px_1fr] grid-rows-[60px_1fr] h-screen bg-gray-900 text-white">
+    <div className="grid grid-cols-[250px_1fr] grid-rows-[60px_1fr] h-screen  text-white">
       {/* Header */}
       <header className="col-span-2 flex items-center justify-between px-4 bg-black border-b border-gray-800">
         <Header />
@@ -19,7 +19,7 @@ const GlobalLayout = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main>{children}</main>
+      <main className="bg-[#000000]">{children}</main>
     </div>
   );
 };
