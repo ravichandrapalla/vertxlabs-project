@@ -40,7 +40,7 @@ const OverviewSection = () => {
   const [selectedAdd, setSelectedAdd] = useState("+ Add");
 
   return (
-    <div className="grid grid-cols-[2fr_1fr] grid-rows-[auto_auto] gap-6 rounded-xl py-6">
+    <div className="w-225 h-68 grid grid-cols-[2fr_1fr] grid-rows-[auto_auto] gap-4 rounded-xl py-6">
       {/* Visitors Graph (Top Left, Large) */}
       <div className="p-6 rounded-lg shadow bg-gray-900">
         <div className="flex justify-between items-center mb-4">

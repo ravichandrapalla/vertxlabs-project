@@ -4,7 +4,7 @@ import VisitorsGraph from "../components/graph/VisitorsGraph";
 
 const Dashboard = () => {
   return (
-    <div className="text-white  h-full">
+    <div className="text-white  h-full flex flex-col">
       <section className="bg-[#000000] text-white flex justify-between items-center border-b-1 border-[#1D1D1D] ">
         <div className="flex items-center justify-center ">
           <div className="flex items-center justify-center p-4 border-r-1 border-[#1D1D1D]">
@@ -18,9 +18,9 @@ const Dashboard = () => {
           <p>More</p>
         </div>
       </section>
-      <article className="bg-[#080808] p-4">
+      <article className="bg-[#080808] p-4  flex-grow">
         {/* Overview Section */}
-        <section className="px-6 h-full ">
+        <section className="px-6  ">
           <h2 className="text-2xl font-bold">Overview</h2>
           <OverviewSection />
         </section>
