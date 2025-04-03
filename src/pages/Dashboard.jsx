@@ -4,16 +4,16 @@ import VisitorsGraph from "../components/graph/VisitorsGraph";
 const Dashboard = () => {
   return (
     <div className="space-y-6">
-      <section className="bg-[#000000] flex justify-between items-center border-b-1 border-[#1D1D1D] ">
-        <div className="flex items-center space-x-4">
-          <div className="p-4 border-r-1 border-[#1D1D1D]">
+      <section className="bg-[#000000] text-white flex justify-between items-center border-b-1 border-[#1D1D1D] ">
+        <div className="flex items-center justify-center ">
+          <div className="flex items-center justify-center p-4 border-r-1 border-[#1D1D1D]">
             <p>Overview</p>
           </div>
-          <div className="p-4 border-r-1 border-[#1D1D1D]">
+          <div className="flex items-center justify-center p-4 border-r-1 border-[#1D1D1D]">
             <p>Demographics</p>
           </div>
         </div>
-        <div className="p-4 border-l-1 border-[#1D1D1D]">
+        <div className="flex items-center justify-center p-4 border-l-1 border-[#1D1D1D] w-30">
           <p>More</p>
         </div>
       </section>
