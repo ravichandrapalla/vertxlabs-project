@@ -12,7 +12,7 @@ const menuItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="flex border-[#1D1D1D] border-r">
+    <aside className="hidden md:flex border-[#1D1D1D] border-r">
       <div className="w-12.5 flex flex-col justify-between border-[#1D1D1D] border-r">
         <div className="border-[#1D1D1D] border-b w-12.5 h-12.5 flex items-center justify-center">
           <img alt="profile pic" src={Profile} width={30} height={30} />
