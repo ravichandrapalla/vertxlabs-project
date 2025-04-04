@@ -1,7 +1,9 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
-import { IN, US } from "country-flag-icons/react/3x2";
+import { IN, US, CA, AE } from "country-flag-icons/react/3x2";
+import World from "../../assets/World.png";
+import Legend from "../ui/Legend";
 
 const demographics = [
   { country: "India", percentage: 40, color: "bg-purple-600", flag: "🇮🇳" },
@@ -9,6 +11,20 @@ const demographics = [
   { country: "CANADA", percentage: 10, color: "bg-red-500", flag: "🇨🇦" },
   { country: "UAE", percentage: 7, color: "bg-green-500", flag: "🇦🇪" },
 ];
+const getFlag = (param) => {
+  switch (param) {
+    case "🇮🇳":
+      return <IN title="India" className="w-8 h-8 rounded" />;
+    case "🇺🇸":
+      return <US title="United States" className="w-8 h-8 rounded" />;
+    case "🇨🇦":
+      return <CA title="United States" className="w-8 h-8 rounded" />;
+    case "🇦🇪":
+      return <AE title="United States" className="w-8 h-8 rounded" />;
+    default:
+      return null;
+  }
+};
 
 const DemoGraphics = () => {
   return (
@@ -16,15 +32,18 @@ const DemoGraphics = () => {
       {/* Header */}
       {/* <div className="flex justify-between items-center mb-4">
         <h3 className="text-xl font-semibold">Demographics</h3>
-        <button className="flex items-center space-x-1 bg-gray-800 px-3 py-1 rounded-lg">
-          <span>Visitors</span>
-          <IoChevronDown />
-        </button>
       </div> */}
 
       {/* World Map Placeholder */}
-      <div className="w-[65%] h-40 bg-[#000000] rounded-lg flex items-center justify-center">
-        <p className="text-gray-400 text-sm">[ World Map Placeholder ]</p>
+      <div className="px-4 w-[65%] h-40 flex flex-col bg-[#000000] rounded-lg items-start justify-center">
+        {/* <p className="text-gray-400 text-sm">[ World Map Placeholder ]</p> */}
+        <h3 className="text-xl font-semibold">Demographics</h3>
+        <img
+          src={World}
+          alt="World Map"
+          className="w-full h-full px-6 rounded-lg"
+        />
+        <Legend />
       </div>
 
       {/* Country Data */}
@@ -35,9 +54,7 @@ const DemoGraphics = () => {
               key={country}
               className="flex items-center justify-between w-full mb-3 gap-2"
             >
-              <div className="">
-                <IN className="w-8 h-8 rounded" />
-              </div>
+              <div className="">{getFlag(flag)}</div>
               <div className="w-full">
                 <div className="flex justify-between items-center">
                   <span className="flex items-center space-x-2">
