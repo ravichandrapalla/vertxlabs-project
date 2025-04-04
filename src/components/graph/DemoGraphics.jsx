@@ -52,11 +52,11 @@ const DemoGraphics = () => {
   };
 
   return (
-    <div className="md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-x-5 bg-black rounded-xl">
+    <div className="flex flex-col md:col-span-2 md:flex-row items-center justify-between gap-x-5 bg-black rounded-xl overflow-hidden">
       {/* World Map Section */}
-      <div className="px-4 w-[65%] h-40 flex flex-col bg-[#000000] rounded-lg items-start justify-center">
-        <div className="flex flex-col items-start gap-4 md:justify-between md:items-center w-full">
-          <h3 className="text-xl font-semibold">Demographics</h3>
+      <div className="md:w-[65%]  flex flex-col bg-[#000000] rounded-lg items-start justify-start">
+        <div className="m-6 flex flex-col items-start gap-4 w-full ">
+          <p className="text-xl font-semibold">Demographics</p>
           <Dropdown
             options={dropdownOptions.visitors}
             selected={visitorType}
@@ -72,7 +72,7 @@ const DemoGraphics = () => {
       </div>
 
       {/* Country Data */}
-      <div className="flex flex-col flex-grow p-4">
+      <div className="w-full  flex flex-col flex-grow p-4">
         <div className="flex flex-col border-[#1D1D1D] border-b-1 pb-2 max-h-64 overflow-y-auto">
           {displayDemographics.map(({ country, percentage, color, flag }) => (
             <div
@@ -97,16 +97,19 @@ const DemoGraphics = () => {
             </div>
           ))}
         </div>
-
-        <button
-          className="mt-2 flex items-center justify-end space-x-2 text-blue-400"
-          onClick={() => setShowAllCountries(!showAllCountries)}
-        >
-          <div className="w-[70%] flex items-center space-x-6">
-            <span>{showAllCountries ? "Show less" : "View all countries"}</span>
-            <FaArrowRight />
-          </div>
-        </button>
+        <div className="flex items-center justify-end">
+          <button
+            className="mt-2 flex items-center justify-end space-x-2 text-blue-400 "
+            onClick={() => setShowAllCountries(!showAllCountries)}
+          >
+            <div className="flex items-center space-x-6">
+              <span>
+                {showAllCountries ? "Show less" : "View all countries"}
+              </span>
+              <FaArrowRight />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );

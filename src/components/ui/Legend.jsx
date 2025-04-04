@@ -9,7 +9,7 @@ const legendItems = [
 
 const Legend = () => {
   return (
-    <div className="flex space-x-4  border=[#1D1D1D] rounded-4xl border-1 px-2">
+    <div className="hidden  md:flex space-x-4  border=[#1D1D1D] rounded-4xl border-1 px-2">
       {legendItems.map(({ country, color }) => (
         <div
           key={country}

@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "./src/styles/fants.css";
+@import "./styles/fonts.css";
+
 * {
   /* margin: 0;
   padding: 0; */

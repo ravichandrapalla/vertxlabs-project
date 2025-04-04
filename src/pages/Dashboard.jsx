@@ -27,8 +27,8 @@ const Dashboard = () => {
       <TabsContainer activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Active Section */}
-      <article className="bg-[#080808] p-4 flex-grow">
-        <section className="px-6">{renderActiveSection()}</section>
+      <article className="bg-[#080808] flex-grow p-4">
+        <section className="">{renderActiveSection()}</section>
       </article>
     </div>
   );
