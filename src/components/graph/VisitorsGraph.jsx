@@ -64,12 +64,12 @@ const VisitorsGraph = ({
             selected={selectedTime}
             setSelected={setSelectedTime}
           />
+          <Dropdown
+            options={dropdownOptions.addOptions}
+            selected={selectedAdd}
+            setSelected={setSelectedAdd}
+          />
         </div>
-        <Dropdown
-          options={dropdownOptions.addOptions}
-          selected={selectedAdd}
-          setSelected={setSelectedAdd}
-        />
       </div>
 
       <div className="flex items-baseline gap-4">
