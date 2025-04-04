@@ -1,6 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
+import { IN, US } from "country-flag-icons/react/3x2";
 
 const demographics = [
   { country: "India", percentage: 40, color: "bg-purple-600", flag: "🇮🇳" },
@@ -30,19 +31,26 @@ const DemoGraphics = () => {
       <div className="flex flex-col flex-grow p-4 ">
         <div className="flex flex-col border-[#1D1D1D] border-b-1 pb-2">
           {demographics.map(({ country, percentage, color, flag }) => (
-            <div key={country} className="mb-3">
-              <div className="flex justify-between items-center">
-                <span className="flex items-center space-x-2">
-                  <span className="text-lg">{flag}</span>
-                  <span>{country}</span>
-                </span>
-                <span className="text-sm">{percentage}%</span>
+            <div
+              key={country}
+              className="flex items-center justify-between w-full mb-3 gap-2"
+            >
+              <div className="">
+                <IN className="w-8 h-8 rounded" />
               </div>
-              <div className="w-full bg-gray-700 h-2 rounded-md mt-1">
-                <div
-                  className={`${color} h-2 rounded-md`}
-                  style={{ width: `${percentage}%` }}
-                ></div>
+              <div className="w-full">
+                <div className="flex justify-between items-center">
+                  <span className="flex items-center space-x-2">
+                    <span>{country}</span>
+                  </span>
+                  <span className="text-sm">{percentage}%</span>
+                </div>
+                <div className=" bg-gray-700 h-2 rounded-md mt-1">
+                  <div
+                    className={`${color} h-2 rounded-md`}
+                    style={{ width: `${percentage}%` }}
+                  ></div>
+                </div>
               </div>
             </div>
           ))}
