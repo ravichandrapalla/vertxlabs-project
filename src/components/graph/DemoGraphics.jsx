@@ -52,10 +52,10 @@ const DemoGraphics = () => {
   };
 
   return (
-    <div className="col-span-2 flex items-center justify-between gap-x-5 bg-black rounded-xl">
+    <div className="md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-x-5 bg-black rounded-xl">
       {/* World Map Section */}
       <div className="px-4 w-[65%] h-40 flex flex-col bg-[#000000] rounded-lg items-start justify-center">
-        <div className="flex justify-between items-center w-full">
+        <div className="flex flex-col items-start gap-4 md:justify-between md:items-center w-full">
           <h3 className="text-xl font-semibold">Demographics</h3>
           <Dropdown
             options={dropdownOptions.visitors}

@@ -152,7 +152,7 @@ const OverviewSection = () => {
   const comparisonData = getComparisonData();
 
   return (
-    <div className="w-full grid grid-cols-[2fr_1fr] grid-rows-[auto_auto] gap-4 rounded-xl p-4">
+    <div className="w-full flex flex-col  md:grid md:grid-cols-[2fr_1fr] md:grid-rows-[auto_auto] gap-4 rounded-xl p-4 overflow-y-auto  md:overflow-hidden">
       {/* Visitors Graph (Top Left, Large) */}
       <VisitorsGraph
         dropdownOptions={dropdownOptions}

@@ -51,9 +51,9 @@ const VisitorsGraph = ({
   });
 
   return (
-    <div className="p-6 rounded-lg shadow bg-[#000000]">
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex space-x-2">
+    <div className="p-4 md:p-6 rounded-lg shadow bg-[#000000]">
+      <div className="flex flex-wrap justify-between items-center mb-4 gap-2">
+        <div className="flex flex-wrap gap-2">
           <Dropdown
             options={dropdownOptions.visitors}
             selected={selectedVisitor}
@@ -64,17 +64,19 @@ const VisitorsGraph = ({
             selected={selectedTime}
             setSelected={setSelectedTime}
           />
-          <Dropdown
-            options={dropdownOptions.addOptions}
-            selected={selectedAdd}
-            setSelected={setSelectedAdd}
-          />
+          <div>
+            <Dropdown
+              options={dropdownOptions.addOptions}
+              selected={selectedAdd}
+              setSelected={setSelectedAdd}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="flex items-baseline gap-4">
-        <h3 className="text-3xl font-bold">{metrics.total}</h3>
-        <span className="text-green-400">
+      <div className="flex items-baseline gap-2 md:gap-4">
+        <h3 className="text-2xl md:text-3xl font-bold">{metrics.total}</h3>
+        <span className="text-green-400 text-sm md:text-base">
           {metrics.change} {metrics.changeValue}
         </span>
       </div>
@@ -82,8 +84,8 @@ const VisitorsGraph = ({
       <div className="mt-4 h-40">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
-            <XAxis dataKey="date" stroke="#ccc" />
-            <YAxis stroke="#ccc" />
+            <XAxis dataKey="date" stroke="#ccc" tick={{ fontSize: 10 }} />
+            <YAxis stroke="#ccc" tick={{ fontSize: 10 }} />
             <Tooltip content={<CustomTooltip />} />
             {compareMetric && <Legend />}
             <Line

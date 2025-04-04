@@ -32,16 +32,14 @@ const Header = () => {
 
       {/* Mobile Layout */}
       <div className="flex md:hidden w-full justify-between p-2">
-        <div className="  w-12.5 h-12.5 flex items-center justify-center">
+        <div className=" flex items-center justify-center">
           <img alt="profile pic" src={Profile} width={30} height={30} />
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           <img alt="app-logo" src={MobileLogo} width={30} height={30} />
         </div>
-        <div className="flex items-center">
-          <p className="font-medium text-white">
-            <SlOptionsVertical />
-          </p>
+        <div className="flex items-center justify-center">
+          <SlOptionsVertical size={20} color="white" />
         </div>
       </div>
     </header>
