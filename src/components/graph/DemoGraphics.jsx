@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import { IN, US, CA, AE } from "country-flag-icons/react/3x2";
 import World from "../../assets/World.png";
 import Legend from "../ui/Legend";
+import Dropdown from "../ui/Dropdown";
 
-const demographics = [
+// Extended demographics data
+const allDemographics = [
   { country: "India", percentage: 40, color: "bg-purple-600", flag: "🇮🇳" },
   { country: "USA", percentage: 25, color: "bg-orange-500", flag: "🇺🇸" },
   { country: "CANADA", percentage: 10, color: "bg-red-500", flag: "🇨🇦" },
   { country: "UAE", percentage: 7, color: "bg-green-500", flag: "🇦🇪" },
+  { country: "UK", percentage: 5, color: "bg-blue-500", flag: "🇬🇧" },
+  { country: "Australia", percentage: 4, color: "bg-yellow-500", flag: "🇦🇺" },
+  { country: "Germany", percentage: 3, color: "bg-pink-500", flag: "🇩🇪" },
+  { country: "France", percentage: 2, color: "bg-indigo-500", flag: "🇫🇷" },
 ];
+
 const getFlag = (param) => {
   switch (param) {
     case "🇮🇳":
@@ -18,26 +25,44 @@ const getFlag = (param) => {
     case "🇺🇸":
       return <US title="United States" className="w-8 h-8 rounded" />;
     case "🇨🇦":
-      return <CA title="United States" className="w-8 h-8 rounded" />;
+      return <CA title="Canada" className="w-8 h-8 rounded" />;
     case "🇦🇪":
-      return <AE title="United States" className="w-8 h-8 rounded" />;
+      return <AE title="United Arab Emirates" className="w-8 h-8 rounded" />;
     default:
-      return null;
+      // For other countries, return a generic flag representation
+      return (
+        <div className="w-8 h-6 bg-gray-600 rounded flex items-center justify-center">
+          {param}
+        </div>
+      );
   }
 };
 
 const DemoGraphics = () => {
-  return (
-    <div className="col-span-2 flex items-center justify-between gap-x-5 bg-black rounded-xl ">
-      {/* Header */}
-      {/* <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold">Demographics</h3>
-      </div> */}
+  const [visitorType, setVisitorType] = useState("Visitors");
+  const [showAllCountries, setShowAllCountries] = useState(false);
 
-      {/* World Map Placeholder */}
+  // Display top 4 countries or all countries based on showAllCountries
+  const displayDemographics = showAllCountries
+    ? allDemographics
+    : allDemographics.slice(0, 4);
+
+  const dropdownOptions = {
+    visitors: ["Visitors", "Connections", "Interactions", "Impressions"],
+  };
+
+  return (
+    <div className="col-span-2 flex items-center justify-between gap-x-5 bg-black rounded-xl">
+      {/* World Map Section */}
       <div className="px-4 w-[65%] h-40 flex flex-col bg-[#000000] rounded-lg items-start justify-center">
-        {/* <p className="text-gray-400 text-sm">[ World Map Placeholder ]</p> */}
-        <h3 className="text-xl font-semibold">Demographics</h3>
+        <div className="flex justify-between items-center w-full">
+          <h3 className="text-xl font-semibold">Demographics</h3>
+          <Dropdown
+            options={dropdownOptions.visitors}
+            selected={visitorType}
+            setSelected={setVisitorType}
+          />
+        </div>
         <img
           src={World}
           alt="World Map"
@@ -47,9 +72,9 @@ const DemoGraphics = () => {
       </div>
 
       {/* Country Data */}
-      <div className="flex flex-col flex-grow p-4 ">
-        <div className="flex flex-col border-[#1D1D1D] border-b-1 pb-2">
-          {demographics.map(({ country, percentage, color, flag }) => (
+      <div className="flex flex-col flex-grow p-4">
+        <div className="flex flex-col border-[#1D1D1D] border-b-1 pb-2 max-h-64 overflow-y-auto">
+          {displayDemographics.map(({ country, percentage, color, flag }) => (
             <div
               key={country}
               className="flex items-center justify-between w-full mb-3 gap-2"
@@ -62,7 +87,7 @@ const DemoGraphics = () => {
                   </span>
                   <span className="text-sm">{percentage}%</span>
                 </div>
-                <div className=" bg-gray-700 h-2 rounded-md mt-1">
+                <div className="bg-gray-700 h-2 rounded-md mt-1">
                   <div
                     className={`${color} h-2 rounded-md`}
                     style={{ width: `${percentage}%` }}
@@ -73,9 +98,12 @@ const DemoGraphics = () => {
           ))}
         </div>
 
-        <button className="mt-2 flex items-center justify-end space-x-2 text-blue-400">
-          <div className="w-[70%] flex items-center space-x-6 ">
-            <span>View all countries</span>
+        <button
+          className="mt-2 flex items-center justify-end space-x-2 text-blue-400"
+          onClick={() => setShowAllCountries(!showAllCountries)}
+        >
+          <div className="w-[70%] flex items-center space-x-6">
+            <span>{showAllCountries ? "Show less" : "View all countries"}</span>
             <FaArrowRight />
           </div>
         </button>

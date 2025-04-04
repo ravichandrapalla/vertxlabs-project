@@ -1,31 +1,58 @@
+import React, { useState, useRef, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { useState } from "react";
 
 const Dropdown = ({ options, selected, setSelected }) => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleSelect = (option) => {
+    setSelected(option);
+    setIsOpen(false);
+  };
+
+  // Determine if this is an "Add" dropdown
+  const isAddDropdown = selected === "+ Add";
 
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
-        className="bg-gray-800 px-3 py-1 rounded-md flex items-center space-x-1"
-        onClick={() => setOpen(!open)}
+        className={`flex items-center justify-between px-3 py-1 text-white rounded-md ${
+          isAddDropdown ? "bg-blue-600" : "bg-gray-800"
+        } hover:bg-opacity-80 transition-colors`}
+        onClick={() => setIsOpen(!isOpen)}
       >
         <span>{selected}</span>
-        <FiChevronDown />
+        <FiChevronDown
+          className={`ml-2 ${isOpen ? "transform rotate-180" : ""}`}
+        />
       </button>
-      {open && (
-        <div className="absolute left-0 mt-1 w-40 bg-gray-900 rounded shadow-lg z-10">
+
+      {isOpen && (
+        <div className="absolute z-10 mt-1 w-40 bg-gray-800 border border-gray-700 rounded-md shadow-lg">
           {options.map((option) => (
-            <div
+            <button
               key={option}
-              className="px-3 py-2 hover:bg-gray-700 cursor-pointer"
-              onClick={() => {
-                setSelected(option);
-                setOpen(false);
-              }}
+              className={`block w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-700 ${
+                option === selected ? "bg-gray-700" : ""
+              }`}
+              onClick={() => handleSelect(option)}
             >
               {option}
-            </div>
+            </button>
           ))}
         </div>
       )}

@@ -15,7 +15,7 @@ const Header = () => {
 
       <div className="flex flex-grow items-center justify-between ">
         <div className="p-4">
-          <p className="font-medium text-white">Analytics</p>
+          <p className="font-semibold text-white">Analytics</p>
         </div>
 
         <div className="flex w-60 items-center justify-center">
